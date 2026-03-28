@@ -7,6 +7,10 @@ from transformers import (
 )
 import numpy as np
 from sklearn.metrics import accuracy_score, f1_score
+import os
+os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
+
+from transformers import TrainingArguments
 
 MODEL_NAME = "xlm-roberta-base"
 DATA_DIR = "data/subsets/en"
@@ -17,7 +21,7 @@ ds = load_from_disk(DATA_DIR)
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 
 def tokenize_fn(batch):
-    return tokenizer(batch["text"], truncation=True, max_length=256)
+    return tokenizer(batch["text"], truncation=True, max_length=96)
 
 tokenized_ds = ds.map(tokenize_fn, batched=True)
 tokenized_ds = tokenized_ds.remove_columns(["text", "label_text", "lang"])
@@ -42,14 +46,17 @@ training_args = TrainingArguments(
     eval_strategy="epoch",
     save_strategy="epoch",
     logging_strategy="epoch",
-    per_device_train_batch_size=16,
-    per_device_eval_batch_size=16,
-    num_train_epochs=2,
+    per_device_train_batch_size=2,
+    per_device_eval_batch_size=2,
+    gradient_accumulation_steps=1,
+    num_train_epochs=1,
     learning_rate=2e-5,
+    dataloader_pin_memory=False,
+    no_cuda=True,
     load_best_model_at_end=True,
     metric_for_best_model="macro_f1",
     greater_is_better=True,
-    save_total_limit=1
+    save_total_limit=1,
 )
 
 trainer = Trainer(
