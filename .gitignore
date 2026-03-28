@@ -3,3 +3,8 @@ data/subsets/
 __pycache__/
 *.pt
 *.bin
+data/
+outputs/
+data/
+outputs/
+*.safetensors
