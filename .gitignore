@@ -1,0 +1,5 @@
+data/raw/
+data/subsets/
+__pycache__/
+*.pt
+*.bin

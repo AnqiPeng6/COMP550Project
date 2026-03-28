@@ -1,0 +1,70 @@
+{
+  "builder_name": "json",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "amazon_reviews_multi_zh",
+  "dataset_size": 37825480,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/SetFit/amazon_reviews_multi_zh@184ac90d5511a7f6801cba99688892f440ece660/train.jsonl": {
+      "num_bytes": 70681483,
+      "checksum": null
+    },
+    "hf://datasets/SetFit/amazon_reviews_multi_zh@184ac90d5511a7f6801cba99688892f440ece660/validation.jsonl": {
+      "num_bytes": 1746156,
+      "checksum": null
+    },
+    "hf://datasets/SetFit/amazon_reviews_multi_zh@184ac90d5511a7f6801cba99688892f440ece660/test.jsonl": {
+      "num_bytes": 1775522,
+      "checksum": null
+    }
+  },
+  "download_size": 74203161,
+  "features": {
+    "text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "label": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "label_text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "lang": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 112028641,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 36030247,
+      "num_examples": 200000,
+      "dataset_name": "amazon_reviews_multi_zh"
+    },
+    "validation": {
+      "name": "validation",
+      "num_bytes": 890180,
+      "num_examples": 5000,
+      "dataset_name": "amazon_reviews_multi_zh"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 905053,
+      "num_examples": 5000,
+      "dataset_name": "amazon_reviews_multi_zh"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
